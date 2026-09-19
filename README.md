@@ -1,5 +1,5 @@
 
-# SysWin 
+# Syswin 
 
   *Multiple POSIX systems on windows*
 
@@ -105,9 +105,10 @@ The cygwin root lives in the `C: drive in `c:\cygwin`
   /programs/      ->     "c:/Program Files"
   /prog_x64/      ->     "c:/Program Files"
   /prog_x86/      ->     "c:/Program Files (x86)"
+
   /system/        ->     "c:/Windows/System"
-  /system_32/         ->     "c:/Windows/System2"
-  /system_64/         ->     "c:/Windows/System2"
+  /sys_32/        ->     "c:/Windows/System2"
+  /sys_64/        ->     "c:/Windows/System2"
 
 ```
 
@@ -157,6 +158,14 @@ The Gitwin root lives in the `G:` drive in `g:\gitwin`
   /mingw64/      ->      g:/mingw64/
 
   /windows/      ->      c:/windows/
+  /progdata/      ->     "c:/ProgramData"
+  /programs/      ->     "c:/Program Files"
+  /prog_x64/      ->     "c:/Program Files"
+  /prog_x86/      ->     "c:/Program Files (x86)"
+
+  /system/        ->     "c:/Windows/System"
+  /sys_32/        ->     "c:/Windows/System2"
+  /sys_64/        ->     "c:/Windows/System2"
 
 ```
 
