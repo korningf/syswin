@@ -41,9 +41,14 @@ You can also switch to Msys or MingW64 for specialised environments.
 
 
 * [Cygwin Guide](https://www.cygwin.com/faq.html)
+* [Cygwin and MingW](https://gcc.gnu.org/onlinedocs/gcc/Cygwin-and-MinGW-Options.html)
 
-* [MSys2 Runtimes](https://www.msys2.org/wiki/How-does-MSYS2-differ-from-Cygwin/)
-  
+* [MSys Guide](https://www.msys2.org/)
+* [MSys Runtimes](https://www.msys2.org/docs/environments/)
+* [MSys Internals](https://www.msys2.org/wiki/MSYS2-introduction/)
+* [MSys Notes](https://www.msys2.org/wiki/How-does-MSYS2-differ-from-Cygwin/)
+
+
 
 # Powershell
 
