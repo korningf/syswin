@@ -5,16 +5,24 @@
 
 SysWin is a platform standard and a suite to empower multiple simultaneous POSIX runtime environments on Windows.
 
+It runs a Cygwin, Gitbash (and MSys2, MingW64), and WSL subsystem simultaneoously on the same development machine.
 
-# Design
 
-Cygwin is a single runtime envirtonment and library called cygwin1.dll that full provides POSIX compatibility layer.
-it supports a full POSIX kernel and GNU-POSIX API, msystem calls, dynamic libraries, and compilation tool chains etc.
+# Background
 
-Crucially cygwin support ELF librtaries, meaning x86 and x64 binary code compiled for linux will work on cygwin.
+## Cygwin
+
+Cygwin is a single runtime environment and library called cygwin1.dll that full provides POSIX compatibility layer.
+It supports a full POSIX kernel and GNU-POSIX API, msystem calls, dynamic libraries, and compilation tool chains etc.
+
+Crucially cygwin support ELF libraries, meaning x86 and x64 binary code compiled for linux will work on cygwin.
 Use cygwin if you need to integrate with POSIX/UNIX/LINUX libraries or cross-compile or compile such custom code.
 
-MinGW, Mingw32 and Mingw64 Minimal Gnu for Windows, are Gnu POSIX libraries statically compiled for native Windows.
+There is no Cygwin equivalent to the `MSYSTEM` environment in Cygwin as it is a single environment platform only. 
+Anything compiled natively inside Cygwin links against the cygwin1.dll and requires the Cygwin runtime to work.
+
+
+## GitBash (Msys)
 
 MSys, SysGit, Gitbash are all derived from a fork of cygwin via its own portable runtime library called msys-2.0.dll.
 Crucially, as the MSys developers based it off Cygwin, they added a clever mechanism to switch runtime environment.
@@ -22,15 +30,33 @@ Crucially, as the MSys developers based it off Cygwin, they added a clever mecha
 Thus all MSys derived systems use a `MSYSTEM` environment variable to dynamically switch between MSys and MingW.
 Once can set `MSYSTEM` to switch between MSYS, MSYS2, SysGit, GitBash, MINGW32, MINGW64, UCRT64, and CLANG64.
 
-There is no Cygwin equivalent to the MSYSTEM environmen in Cygwin as it is a single environment platform only. 
-Anything compiled natively inside Cygwin links against the cygwin1.dll and requires the Cygwin runtime to work.
+
+## MinGW and others
+
+MinGW or Minimal Gnu for Windows (Mingw32 and Mingw64) are POSIX programs statically compiled for native Windows.
+UCRT64 is built against a Windows 64bit C runtime, where CLANG64 is a built using CLang, rather than GCC / GLIBC.
+
+
+## WSL (Interix)
+
+WSL or Windows Subsystem of Linux (aka Interix / Winterix) is a full Linux VM runnign ongthe windows hypervisor.
+Docker Desktop for Windows (and a Kubernetes Minikube) no longer run on any other hypervisors like VirtualBox.
+Sowe will need WSL as well.
+
+
+
+# Design
 
 Syswin's main strategy is is to map drive letters and make use of Symbolic Links fully-portable and reversible.
-We combine Windows NTFS Junctions or Windows Native symbolic Links and set the `CYGWIN` and MINGW`
 
 That is, we want make a Cygwin `/usr/bin/` path map to Windows `c:/usr/bin`, but we want the same for Gitbash.
+
 The solution is to make Gitbash live in its own relative drive mapping, thus mapping `/usr/bin` to `g:/usr/bin`.
 
+We use Windows NTFS Junctions and set the `CYGWIN` and `MSYS` environment variables for native Symbolic Links.
+
+
+# UseCase
 
 Install cygwin as Administrator and use it for a full multi-user setp, to compile and run daemons (ex: OpenSSH).
 
@@ -39,6 +65,7 @@ Use GItbash for a light user-space setup, it can also run a daemon as your local
 You can also switch to Msys or MingW64 for specialised environments.
 
 
+# Documentation
 
 * [Cygwin Guide](https://www.cygwin.com/faq.html)
 * [Cygwin and MingW](https://gcc.gnu.org/onlinedocs/gcc/Cygwin-and-MinGW-Options.html)
@@ -49,17 +76,24 @@ You can also switch to Msys or MingW64 for specialised environments.
 * [MSys Notes](https://www.msys2.org/wiki/How-does-MSYS2-differ-from-Cygwin/)
 
 
+# Preparation
+
+
+# Installation
+
+
+# Windows
+
 
 # Powershell
-
-
-# Chocolatey
-
 
 
 # Syswin
 
 Syswin is where we mount the installers, Windows SysInternals, and some custom utilities (`su.exe`).
+
+
+# Chocolatey
 
 
 
@@ -117,6 +151,8 @@ The cygwin root lives in the `C: drive in `c:\cygwin`
 
 ```
 
+# Apt-Cyg
+
 
 # Gitwin  (GitBash MSYS2)
 
@@ -173,4 +209,12 @@ The Gitwin root lives in the `G:` drive in `g:\gitwin`
   /sys_64/        ->     "c:/Windows/System2"
 
 ```
+
+
+# PacMan
+
+
+
+# WSL
+
 
