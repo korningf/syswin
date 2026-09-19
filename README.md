@@ -71,7 +71,7 @@ The cygwin root lives in the `C: drive in `c:\cygwin`
 ```
 
 
-```bash
+```
   /              ->      c:/cygwin/
 
   /bin/          ->      c:/cygwin/bin/
@@ -128,7 +128,7 @@ The Gitwin root lives in the `G:` drive in `g:\gitwin`
   MSYS=g:/gitwin winsymlinks:nativestrict
 ```
 
-```bash
+```
   /              ->      g:/gitwin/
 
   /bin/          ->      g:/gitwin/bin/
